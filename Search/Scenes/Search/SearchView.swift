@@ -11,7 +11,7 @@ import SwiftUI
 public struct SearchView: View {
     // MARK: Properties
     
-    // MARK: Initializer
+    // MARK: Public Initializer
     public init() {}
     
     // MARK: Body
@@ -23,7 +23,7 @@ public struct SearchView: View {
     }
 }
 
-// MARK: Preview
+// MARK: Search View Previews
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
         SearchView()
