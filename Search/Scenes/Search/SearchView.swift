@@ -12,8 +12,17 @@ import Shared_Models
 // MARK: - Search View
 public struct SearchView: View {
     // MARK: Properties
-    @State private var cancellable: AnyCancellable?
-    @State var movies: MovieResultEntity?
+    @ObservedObject private var searchViewModel = SearchViewModel()
+    
+    @State var searchWord = ""
+    private var movieSearch: [MovieResultEntity.Movie] {
+        if searchWord.isEmpty {
+            return []
+        } else {
+            searchViewModel.searchMovie(by: searchWord)
+            return searchViewModel.searchMovieResult
+        }
+    }
     
     // MARK: Public Initializer
     public init() {}
@@ -21,46 +30,33 @@ public struct SearchView: View {
     // MARK: Body
     public var body: some View {
         NavigationView {
-            List {
+            List(self.movieSearch, id: \.id) { movieModel in
                 NavigationLink {
                     SearchDetailView()
                 } label: {
                     HStack {
-                        Image(systemName: "house")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
+                        AsyncImage(url: URL(string: movieModel.posterPath ?? "")) { image in
+                            image.resizable()
+                        } placeholder: {
+                            ProgressView()
+                        }
+                        .frame(width: 50, height: 50)
+                            
                         
-                        Text("Movie Title")
+                        Text(movieModel.title)
                         
                         Spacer()
                         
                         Image(systemName: "star.fill")
                             .foregroundColor(.yellow)
-                    }
+                    } //: HStack
 
-                }
+                } //: NavigationLink
 
-            }
-            .onAppear {
-                self.cancellable = SearchMovieNetworkGeteway().fetch(with: .init(query: "minions"))
-                    .catch{ error -> AnyPublisher<MovieResultEntity, Never> in
-                        
-                        print(error)
-                        
-                       return Just(MovieResultEntity())
-                            .eraseToAnyPublisher()
-                    }
-                        .sink(receiveValue: { movie in
-                            self.movies = movie
-                            
-                            print(movie)
-                        })
-                
-                
-            }
-        }
-        .navigationTitle("Search")
+            } //: List
+            .navigationTitle("Search")
+        } //: NavigationView
+        .searchable(text: $searchWord, prompt: "Search a movie by title")
     }
 }
 
