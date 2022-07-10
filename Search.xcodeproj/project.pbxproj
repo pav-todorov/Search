@@ -17,6 +17,13 @@
 		E9927AA12878B217001EA9BA /* Search.h in Headers */ = {isa = PBXBuildFile; fileRef = E9927A932878B217001EA9BA /* Search.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E9927AAD2878B230001EA9BA /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9927AAC2878B230001EA9BA /* SearchView.swift */; };
 		E9927AAF2878B23A001EA9BA /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9927AAE2878B23A001EA9BA /* SearchViewModel.swift */; };
+		E99798C4287AAEC900FB3751 /* SearchMovieGateway.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99798C3287AAEC900FB3751 /* SearchMovieGateway.swift */; };
+		E99798C6287AAFB700FB3751 /* SearchMovieGetewayParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99798C5287AAFB700FB3751 /* SearchMovieGetewayParameters.swift */; };
+		E99798C8287AB01700FB3751 /* SearchMovieNetworkGeteway.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99798C7287AB01700FB3751 /* SearchMovieNetworkGeteway.swift */; };
+		E99798CC287AB05B00FB3751 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99798CA287AB05B00FB3751 /* Keys.swift */; };
+		E99798CD287AB05B00FB3751 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99798CB287AB05B00FB3751 /* APIKey.swift */; };
+		E99798CF287AB26B00FB3751 /* Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99798CE287AB26B00FB3751 /* Extensions.framework */; };
+		E99798D0287AB26B00FB3751 /* Extensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E99798CE287AB26B00FB3751 /* Extensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				E99798D0287AB26B00FB3751 /* Extensions.framework in Embed Frameworks */,
 				E98D5D49287AAAE600C39F5A /* Shared_Models.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -54,6 +62,12 @@
 		E9927A9F2878B217001EA9BA /* SearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTests.swift; sourceTree = "<group>"; };
 		E9927AAC2878B230001EA9BA /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		E9927AAE2878B23A001EA9BA /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		E99798C3287AAEC900FB3751 /* SearchMovieGateway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieGateway.swift; sourceTree = "<group>"; };
+		E99798C5287AAFB700FB3751 /* SearchMovieGetewayParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieGetewayParameters.swift; sourceTree = "<group>"; };
+		E99798C7287AB01700FB3751 /* SearchMovieNetworkGeteway.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMovieNetworkGeteway.swift; sourceTree = "<group>"; };
+		E99798CA287AB05B00FB3751 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		E99798CB287AB05B00FB3751 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		E99798CE287AB26B00FB3751 /* Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99798CF287AB26B00FB3751 /* Extensions.framework in Frameworks */,
 				E98D5D48287AAAE600C39F5A /* Shared_Models.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -87,6 +102,9 @@
 		E9363E4F287A1C8300563999 /* Search Movie */ = {
 			isa = PBXGroup;
 			children = (
+				E99798C3287AAEC900FB3751 /* SearchMovieGateway.swift */,
+				E99798C7287AB01700FB3751 /* SearchMovieNetworkGeteway.swift */,
+				E99798C5287AAFB700FB3751 /* SearchMovieGetewayParameters.swift */,
 			);
 			path = "Search Movie";
 			sourceTree = "<group>";
@@ -103,6 +121,7 @@
 		E98D5D46287AAAE600C39F5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E99798CE287AB26B00FB3751 /* Extensions.framework */,
 				E98D5D47287AAAE600C39F5A /* Shared_Models.framework */,
 			);
 			name = Frameworks;
@@ -130,6 +149,7 @@
 		E9927A922878B217001EA9BA /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				E99798C9287AB05B00FB3751 /* Helpers */,
 				E9363E4E287A1C7B00563999 /* Gateways */,
 				E9927AAA2878B21F001EA9BA /* Scenes */,
 				E9927A932878B217001EA9BA /* Search.h */,
@@ -162,6 +182,15 @@
 				E9927AAE2878B23A001EA9BA /* SearchViewModel.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		E99798C9287AB05B00FB3751 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E99798CA287AB05B00FB3751 /* Keys.swift */,
+				E99798CB287AB05B00FB3751 /* APIKey.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,11 +303,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E99798C8287AB01700FB3751 /* SearchMovieNetworkGeteway.swift in Sources */,
 				E9927AAF2878B23A001EA9BA /* SearchViewModel.swift in Sources */,
 				E9363E52287A1E5F00563999 /* SearchDetailView.swift in Sources */,
 				E9363E54287A1E7100563999 /* SearchDetailViewModel.swift in Sources */,
+				E99798CD287AB05B00FB3751 /* APIKey.swift in Sources */,
 				E9927AAD2878B230001EA9BA /* SearchView.swift in Sources */,
+				E99798C6287AAFB700FB3751 /* SearchMovieGetewayParameters.swift in Sources */,
 				E9927A952878B217001EA9BA /* Search.docc in Sources */,
+				E99798CC287AB05B00FB3751 /* Keys.swift in Sources */,
+				E99798C4287AAEC900FB3751 /* SearchMovieGateway.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
