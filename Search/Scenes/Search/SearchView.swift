@@ -12,6 +12,8 @@ import Shared_Models
 // MARK: - Search View
 public struct SearchView: View {
     // MARK: Properties
+    private typealias LocStrings = LocalizedStrings.Modules.Search
+    
     @ObservedObject private var searchViewModel = SearchViewModel()
     
     @FetchRequest(sortDescriptors: [SortDescriptor(\.title, order: .reverse)])
@@ -86,9 +88,9 @@ public struct SearchView: View {
                     }
                 } //: ForEach
             } //: List
-            .navigationTitle("Search")
+            .navigationTitle(Text(LocStrings.modules_search_navigation_title, bundle: Bundle(identifier: "com.movies.Search")))
         }//: NavView
-        .searchable(text: $searchWord, prompt: "Search by movie title")
+        .searchable(text: $searchWord, prompt: Text(LocStrings.modules_search_search_bar_prompt, bundle: Bundle(identifier: "com.movies.Search")))
     }
 }
 
