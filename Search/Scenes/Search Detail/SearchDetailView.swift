@@ -52,7 +52,11 @@ public struct SearchDetailView: View {
                 : CoreDataManager.shared.deleteFavoriteMovie(movie: favoriteMoviesSearch.first(where: { $0.title == movieModel.title })!)
                 
             } label: {
-                favoriteMoviesSearch.contains(where: { $0.title == movieModel.title }) ? Image(systemName: "heart.fill") : Image(systemName: "heart")
+                favoriteMoviesSearch.contains(where: { $0.title == movieModel.title })
+                ? Image(systemName: "heart.fill")
+                    .tint(.red)
+                : Image(systemName: "heart")
+                    .tint(.red)
             }
         }
     }

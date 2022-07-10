@@ -13,7 +13,9 @@ import Extensions
 // MARK: - Search Movie Network Geteway
 struct SearchMovieNetworkGeteway: SearchMovieGeteway {
     func fetch(with parameters: SearchMovieGetewayParameters) -> AnyPublisher<MovieResultEntity, Error> {
-        guard let url = URL(string: "\(Keys.baseAPIURL)search/movie\(Keys.key)&query=\(parameters.query)&page=\(parameters.page)") else {
+        let stringParameter = "\(Keys.baseAPIURL)search/movie\(Keys.key)&query=\(parameters.query)&page=\(parameters.page)".addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        
+        guard let urlString = stringParameter, let url = URL(string: urlString) else {
             fatalError()
         }
         
