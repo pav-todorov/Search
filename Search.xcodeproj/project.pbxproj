@@ -153,10 +153,10 @@
 		E9927A922878B217001EA9BA /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				E9EE4195287B4EC500D89135 /* Resources */,
 				E9927AAA2878B21F001EA9BA /* Scenes */,
 				E99798C9287AB05B00FB3751 /* Helpers */,
 				E9363E4E287A1C7B00563999 /* Gateways */,
+				E9EE4195287B4EC500D89135 /* Resources */,
 				E9927A932878B217001EA9BA /* Search.h */,
 				E9927A942878B217001EA9BA /* Search.docc */,
 			);
@@ -183,7 +183,6 @@
 		E9927AAB2878B225001EA9BA /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				E9EE41A9287B59E000D89135 /* Localizable.strings */,
 				E9927AAC2878B230001EA9BA /* SearchView.swift */,
 				E9927AAE2878B23A001EA9BA /* SearchViewModel.swift */,
 			);
@@ -202,6 +201,7 @@
 		E9EE4195287B4EC500D89135 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E9EE41A9287B59E000D89135 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";

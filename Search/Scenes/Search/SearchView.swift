@@ -62,17 +62,13 @@ public struct SearchView: View {
                     }
                     .swipeActions(edge: .leading, allowsFullSwipe: true) {
                         Button {
-                            
                             CoreDataManager.shared.saveMovie(movie: movieModel)
-                            
                         } label: {
                             Image(systemName: "star.fill")
                         }
                         .tint(.yellow)
                         .disabled(favoriteMoviesSearch.contains(where: { $0.title == movieModel.title }))
-
                     }
-                    
                     .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                         Button {
 
