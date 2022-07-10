@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import Shared_Models
 
 // MARK: - Search View Model
 class SearchViewModel: ObservableObject {
-    
+
 }
