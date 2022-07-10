@@ -24,7 +24,6 @@
 		E99798CD287AB05B00FB3751 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99798CB287AB05B00FB3751 /* APIKey.swift */; };
 		E99798CF287AB26B00FB3751 /* Extensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E99798CE287AB26B00FB3751 /* Extensions.framework */; };
 		E99798D0287AB26B00FB3751 /* Extensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E99798CE287AB26B00FB3751 /* Extensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E99798D4287AC6B800FB3751 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99798D3287AC6B800FB3751 /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +68,6 @@
 		E99798CA287AB05B00FB3751 /* Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		E99798CB287AB05B00FB3751 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		E99798CE287AB26B00FB3751 /* Extensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Extensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E99798D3287AC6B800FB3751 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,17 +197,8 @@
 		E99798D1287AC68200FB3751 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				E99798D2287AC68A00FB3751 /* Data Persistancy */,
 			);
 			path = Managers;
-			sourceTree = "<group>";
-		};
-		E99798D2287AC68A00FB3751 /* Data Persistancy */ = {
-			isa = PBXGroup;
-			children = (
-				E99798D3287AC6B800FB3751 /* CoreDataManager.swift */,
-			);
-			path = "Data Persistancy";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -332,7 +321,6 @@
 				E9927A952878B217001EA9BA /* Search.docc in Sources */,
 				E99798CC287AB05B00FB3751 /* Keys.swift in Sources */,
 				E99798C4287AAEC900FB3751 /* SearchMovieGateway.swift in Sources */,
-				E99798D4287AC6B800FB3751 /* CoreDataManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

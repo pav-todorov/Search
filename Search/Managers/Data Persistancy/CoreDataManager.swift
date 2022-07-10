@@ -7,7 +7,6 @@
 
 import Foundation
 import CoreData
-import Shared_Models
 
 // MARK: - Core Data Manager
 class CoreDataManager {
