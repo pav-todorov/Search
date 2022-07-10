@@ -9,11 +9,11 @@ import Foundation
 import CoreData
 
 // MARK: - Core Data Manager
-class CoreDataManager {
+public class CoreDataManager {
     // MARK: Properties
-    let persistentContainer: NSPersistentContainer
+    public let persistentContainer: NSPersistentContainer
     
-    static let shared = CoreDataManager()
+    public static let shared = CoreDataManager()
     
     // MARK: Initializers
     private init() {
@@ -27,14 +27,14 @@ class CoreDataManager {
         persistentContainer.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
     }
     
-    func saveMovie(movie: MovieResultEntity.Movie) {
-        let movie = Movie(context: persistentContainer.viewContext)
-        movie.id = movie.id
-        movie.title = movie.title
-        movie.originalTitle = movie.originalTitle
-        movie.posterPath = movie.posterPath
-        movie.releaseDate = movie.releaseDate
-        movie.overview = movie.overview
+    public func saveMovie(movie: MovieResultEntity.Movie) {
+        let favoriteMovie = Movie(context: persistentContainer.viewContext)
+        favoriteMovie.id = Int32(movie.id)
+        favoriteMovie.title = movie.title 
+        favoriteMovie.originalTitle = movie.originalTitle
+        favoriteMovie.posterPath = movie.posterPath ?? ""
+        favoriteMovie.releaseDate = movie.releaseDate
+        favoriteMovie.overview = movie.overview
         
         do {
             try persistentContainer.viewContext.save()
@@ -43,7 +43,7 @@ class CoreDataManager {
         }
     }
     
-    func deleteFavoriteMovie(movie: Movie) {
+    public func deleteFavoriteMovie(movie: Movie) {
         persistentContainer.viewContext.delete(movie)
         
         do {
@@ -52,5 +52,4 @@ class CoreDataManager {
             print("Failed to save context \(error)")
         }
     }
-    
 }

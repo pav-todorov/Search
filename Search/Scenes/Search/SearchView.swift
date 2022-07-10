@@ -14,7 +14,10 @@ public struct SearchView: View {
     // MARK: Properties
     @ObservedObject private var searchViewModel = SearchViewModel()
     
-    @State var searchWord = ""
+    @FetchRequest(sortDescriptors: [SortDescriptor(\.title, order: .reverse)])
+    private var favoriteMoviesSearch: FetchedResults<Movie>
+    
+    @State private var searchWord = ""
     private var movieSearch: [MovieResultEntity.Movie] {
         if searchWord.isEmpty {
             return []
@@ -30,33 +33,62 @@ public struct SearchView: View {
     // MARK: Body
     public var body: some View {
         NavigationView {
-            List(self.movieSearch, id: \.id) { movieModel in
-                NavigationLink {
-                    SearchDetailView()
-                } label: {
-                    HStack {
-                        AsyncImage(url: URL(string: movieModel.posterPath ?? "")) { image in
-                            image.resizable()
-                        } placeholder: {
-                            ProgressView()
-                        }
-                        .frame(width: 50, height: 50)
+            List {
+                ForEach(movieSearch, id: \.title){ movieModel in
+                    NavigationLink(destination:
+                                    SearchDetailView(movieModel: movieModel)
+                        .environment(
+                            \.managedObjectContext,
+                             CoreDataManager.shared.persistentContainer.viewContext)
+                    ) {
+                        HStack {
+                            AsyncImage(url: URL(string: "\(Keys.baseImageURL)\(movieModel.posterPath ?? "")")) { image in
+                                image.resizable()
+                            } placeholder: {
+                                ProgressView()
+                            }
+                            .frame(width: 50, height: 80)
+
+                            Text(movieModel.title)
                             
-                        
-                        Text(movieModel.title)
-                        
-                        Spacer()
-                        
-                        Image(systemName: "star.fill")
-                            .foregroundColor(.yellow)
-                    } //: HStack
+                            Spacer()
+                            
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                                .opacity(favoriteMoviesSearch.contains(where: { $0.title == movieModel.title }) ? 1 : 0)
+                        }
+                    }
+                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                        Button {
+                            
+                            CoreDataManager.shared.saveMovie(movie: movieModel)
+                            
+                        } label: {
+                            Image(systemName: "star.fill")
+                        }
+                        .tint(.yellow)
+                        .disabled(favoriteMoviesSearch.contains(where: { $0.title == movieModel.title }))
 
-                } //: NavigationLink
+                    }
+                    
+                    .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                        Button {
 
+                            let favoriteMovie = favoriteMoviesSearch.first(where: { $0.title == movieModel.title })
+
+                            CoreDataManager.shared.deleteFavoriteMovie(movie: favoriteMovie!)
+
+                        } label: {
+                            Image(systemName: "trash")
+                        }
+                        .tint(.red)
+                        .disabled(!favoriteMoviesSearch.contains(where: { $0.title == movieModel.title }))
+                    }
+                } //: ForEach
             } //: List
             .navigationTitle("Search")
-        } //: NavigationView
-        .searchable(text: $searchWord, prompt: "Search a movie by title")
+        }//: NavView
+        .searchable(text: $searchWord, prompt: "Search by movie title")
     }
 }
 

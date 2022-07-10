@@ -149,10 +149,9 @@
 		E9927A922878B217001EA9BA /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				E99798D1287AC68200FB3751 /* Managers */,
+				E9927AAA2878B21F001EA9BA /* Scenes */,
 				E99798C9287AB05B00FB3751 /* Helpers */,
 				E9363E4E287A1C7B00563999 /* Gateways */,
-				E9927AAA2878B21F001EA9BA /* Scenes */,
 				E9927A932878B217001EA9BA /* Search.h */,
 				E9927A942878B217001EA9BA /* Search.docc */,
 			);
@@ -192,13 +191,6 @@
 				E99798CB287AB05B00FB3751 /* APIKey.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		E99798D1287AC68200FB3751 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
