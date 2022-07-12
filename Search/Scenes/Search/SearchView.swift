@@ -20,12 +20,13 @@ public struct SearchView: View {
     private var favoriteMoviesSearch: FetchedResults<Movie>
     
     @State private var searchWord = ""
-    private var movieSearch: [MovieResultEntity.Movie] {
-        if searchWord.isEmpty {
-            return []
-        } else {
-            searchViewModel.searchMovie(by: searchWord)
-            return searchViewModel.searchMovieResult
+
+    private var movieSearch: Binding<String> {
+        Binding {
+            searchWord
+        } set: { searchValue in
+            searchWord = searchValue
+            searchViewModel.searchMovie(by: searchValue)
         }
     }
     
@@ -36,7 +37,7 @@ public struct SearchView: View {
     public var body: some View {
         NavigationView {
             List {
-                ForEach(movieSearch, id: \.title){ movieModel in
+                ForEach(searchViewModel.searchMovieResult, id: \.title){ movieModel in
                     NavigationLink(destination:
                                     SearchDetailView(movieModel: movieModel)
                         .environment(
@@ -86,7 +87,7 @@ public struct SearchView: View {
             } //: List
             .navigationTitle(Text(LocStrings.modules_search_navigation_title, bundle: Bundle(identifier: "com.movies.Search")))
         }//: NavView
-        .searchable(text: $searchWord, prompt: Text(LocStrings.modules_search_search_bar_prompt, bundle: Bundle(identifier: "com.movies.Search")))
+        .searchable(text: movieSearch, prompt: Text(LocStrings.modules_search_search_bar_prompt, bundle: Bundle(identifier: "com.movies.Search")))
     }
 }
 
